@@ -1,17 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ProductsPage from "./pages/ProductsPage";
-import ErrorPage from "./pages/ErrorPage";
+import {
+  Home,
+  About,
+  Products,
+  Error,
+  SingleProduct,
+  Cart,
+  Checkout,
+  PrivateRoute,
+} from "./pages/index";
+import { Navbar, Footer, Sidebar } from "./components/index";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="products" element={<ProductsPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products:id" element={<SingleProduct />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
