@@ -1,7 +1,7 @@
 const CartButtons = () => {
   return (
     <div>
-      <h2>Cart Button</h2>
+      <h2>Cart Buttons</h2>
     </div>
   );
 };
