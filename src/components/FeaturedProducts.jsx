@@ -1,7 +1,7 @@
 const FeaturedProducts = () => {
   return (
     <div>
-      <h2>Featured Products</h2>
+      <h4>Featured Products</h4>
     </div>
   );
 };

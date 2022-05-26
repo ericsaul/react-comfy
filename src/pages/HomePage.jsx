@@ -4,9 +4,12 @@ import aboutImg from "../assets/hero-bcg.jpeg";
 
 const HomePage = () => {
   return (
-    <div>
-      <h2>Home page</h2>
-    </div>
+    <main>
+      <Hero />
+      <FeaturedProducts />
+      <Services />
+      <Contact />
+    </main>
   );
 };
 
