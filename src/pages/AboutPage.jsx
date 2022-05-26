@@ -14,10 +14,12 @@ const AboutPage = () => {
             <div className="underline"></div>
           </div>
           <p>
-            Unam incolunt Belgae, aliam Aquitani, tertiam. Quis aute iure
-            reprehenderit in voluptate velit esse. At nos hinc posthac,
-            sitientis piros Afros. Non equidem invideo, miror magis posuere
-            velit aliquet.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            eveniet hic, animi optio quasi eum magni quidem ipsum ipsa amet
+            sapiente veritatis! Fuga tenetur dicta veniam fugit quas eveniet
+            doloribus deleniti at laudantium, illum totam deserunt itaque ipsam
+            iusto! Tempora veritatis sunt pariatur architecto aliquam odio.
+            Magnam totam dolore quisquam.
           </p>
         </article>
       </Wrapper>
