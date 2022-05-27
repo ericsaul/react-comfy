@@ -1,5 +1,11 @@
 import axios from "axios";
-import { useContext, createContext, useReducer, useEffect } from "react";
+import {
+  useContext,
+  useState,
+  createContext,
+  useReducer,
+  useEffect,
+} from "react";
 import reducer from "../reducers/products_reducer.jsx";
 import { products_url as url } from "../utils/constants";
 import {
@@ -15,6 +21,10 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
+  products_loading: true,
+  products_error: false,
+  products: [],
+  featured_products: [],
 };
 
 const ProductsContext = createContext();
@@ -30,12 +40,18 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const fetchProducts = async (url) => {
-    const response = await axios(url);
-    console.log(response);
+    dispatch({ type: GET_PRODUCTS_BEGIN });
+    try {
+      const response = await axios(url);
+      const products = response.data;
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+    } catch {
+      dispatch({ type: GET_PRODUCTS_ERROR });
+    }
   };
 
   useEffect(() => {
-    fetchProducts(url);
+    const allProducts = fetchProducts(url);
   }, []);
 
   return (
