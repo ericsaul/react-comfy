@@ -8,6 +8,7 @@ import {
 } from "react";
 import reducer from "../reducers/products_reducer.jsx";
 import { products_url as url } from "../utils/constants";
+import { single_product_url } from "../utils/constants";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -24,6 +25,9 @@ const initialState = {
   products_loading: true,
   products_error: false,
   products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: {},
   featured_products: [],
 };
 
@@ -47,6 +51,17 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
     } catch {
       dispatch({ type: GET_PRODUCTS_ERROR });
+    }
+  };
+
+  const fetchSingleProduct = async (url) => {
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+    try {
+      const response = await axios(url);
+      const singleProduct = response.data;
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
+    } catch {
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
   };
 
