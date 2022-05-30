@@ -8,7 +8,7 @@ const Stars = ({ stars, reviews }) => {
       <span key={index}>
         {stars >= index + 1 ? (
           <BsStarFill />
-        ) : stars >= number ? (
+        ) : index >= number ? (
           <BsStarHalf />
         ) : (
           <BsStar />
