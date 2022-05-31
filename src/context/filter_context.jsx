@@ -15,6 +15,7 @@ import {
 const initialState = {
   filtered_products: [],
   all_products: [],
+  grid_view: true,
 };
 
 const FilterContext = createContext();
@@ -28,7 +29,13 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   return (
-    <FilterContext.Provider value="hello">{children}</FilterContext.Provider>
+    <FilterContext.Provider
+      value={{
+        ...state,
+      }}
+    >
+      {children}
+    </FilterContext.Provider>
   );
 };
 
