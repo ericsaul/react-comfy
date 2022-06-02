@@ -17,8 +17,12 @@ const Filters = () => {
     },
     updateFilters,
     clearFilters,
-    allProducts,
+    all_products,
   } = useFilterContext();
+
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
 
   return (
     <Wrapper>
@@ -36,7 +40,117 @@ const Filters = () => {
             />
           </div>
           {/* end search input */}
+          {/* categories */}
+          <div className="form-control">
+            <h5>Category</h5>
+            <div>
+              {categories.map((c, index) => {
+                return (
+                  <button
+                    type="button"
+                    name="category"
+                    key={index}
+                    className={`${
+                      category === c.toLowerCase() ? "active" : null
+                    }`}
+                    onClick={updateFilters}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* end categories */}
+          {/* companies */}
+          <div className="form-control">
+            <h5>Company</h5>
+            <select
+              name="company"
+              className="company"
+              value={company}
+              onChange={updateFilters}
+            >
+              {companies.map((c, index) => {
+                return (
+                  <option key={index} value={c}>
+                    {c}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* end companies */}
+          {/* colors */}
+          <div className="form-control">
+            <h5>colors</h5>
+            <div className="colors">
+              {colors.map((c, index) => {
+                if (c === "all") {
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      name="color"
+                      onClick={updateFilters}
+                      data-color="all"
+                      className={`${
+                        color === "all" ? "active all-btn" : "all-btn"
+                      }`}
+                    >
+                      All
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    key={index}
+                    name="color"
+                    type="button"
+                    data-color={c}
+                    className={`${
+                      color === c ? "color-btn active" : "color-btn"
+                    }`}
+                    style={{ background: c }}
+                    onClick={updateFilters}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* end colors */}
+          {/* price range */}
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              onChange={updateFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+            />
+          </div>
+          {/* end price range */}
+          {/* shipping checkbox */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
+          {/* end shipping checkbox */}
         </form>
+        <button type="button" className="clear-btn" onClick={clearFilters}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   );
