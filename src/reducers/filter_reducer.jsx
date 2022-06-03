@@ -77,8 +77,20 @@ const filter_reducer = (state, action) => {
       // filtering
       if (text) {
         temp_products = temp_products.filter((product) => {
-          return product.name.toLowerCase().startsWith(text);
+          return product.name.toLowerCase().includes(text);
         });
+      }
+      // category
+      if (category !== "all") {
+        temp_products = temp_products.filter(
+          (product) => product.category === category
+        );
+      }
+      // company
+      if (company !== "all") {
+        temp_products = temp_products.filter(
+          (product) => product.company.toLowerCase() === company.toLowerCase()
+        );
       }
       return { ...state, filtered_products: temp_products };
     case CLEAR_FILTERS:
