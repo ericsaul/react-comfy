@@ -89,7 +89,21 @@ const filter_reducer = (state, action) => {
       // company
       if (company !== "all") {
         temp_products = temp_products.filter(
-          (product) => product.company.toLowerCase() === company.toLowerCase()
+          (product) => product.company === company
+        );
+      }
+      // colors
+      if (color !== "all") {
+        temp_products = temp_products.filter((product) => {
+          return product.colors.find((c) => c === color);
+        });
+      }
+      // price
+
+      // shipping
+      if (shipping) {
+        temp_products = temp_products.filter(
+          (product) => product.shipping === true
         );
       }
       return { ...state, filtered_products: temp_products };
