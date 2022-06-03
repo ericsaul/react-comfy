@@ -99,6 +99,7 @@ const filter_reducer = (state, action) => {
         });
       }
       // price
+      temp_products = temp_products.filter((product) => product.price <= price);
 
       // shipping
       if (shipping) {
