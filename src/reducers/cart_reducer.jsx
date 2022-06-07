@@ -13,7 +13,18 @@ const cart_reducer = (state, action) => {
       // check if item is in cart
       const tempItem = state.cart.find((i) => i.id === id + color);
       if (tempItem) {
-        console.log("item exists");
+        const tempCart = state.cart.map((cartItem) => {
+          if (cartItem.id === id + color) {
+            let newAmount = cartItem.amount + amount;
+            if (newAmount > cartItem.max) {
+              newAmount = cartItem.max;
+            }
+            return { ...cartItem, amount: newAmount };
+          } else {
+            return cartItem;
+          }
+        });
+        return { ...state, cart: tempCart };
       } else {
         // create new item
         const newItem = {
