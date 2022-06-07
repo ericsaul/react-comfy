@@ -4,10 +4,10 @@ import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
 
-const CartItems = () => {
+const CartItem = () => {
   return (
     <div>
-      <h2>Cart Items</h2>
+      <h2>Cart Item</h2>
     </div>
   );
 };
@@ -147,4 +147,4 @@ const Wrapper = styled.article`
   }
 `;
 
-export default CartItems;
+export default CartItem;
