@@ -2,9 +2,16 @@ import styled from "styled-components";
 
 const CartColumns = () => {
   return (
-    <div>
-      <h2>Cart Columns</h2>
-    </div>
+    <Wrapper>
+      <div className="content">
+        <h5>item</h5>
+        <h5>price</h5>
+        <h5>quantity</h5>
+        <h5>subtotal</h5>
+        <span></span>
+      </div>
+      <hr />
+    </Wrapper>
   );
 };
 
@@ -15,7 +22,7 @@ const Wrapper = styled.div`
     .content {
       display: grid;
       grid-template-columns: 316px 1fr 1fr 1fr auto;
-      justify-content: center;
+      justify-items: center;
       column-gap: 1rem;
       h5 {
         color: var(--clr-grey-5);
@@ -28,8 +35,8 @@ const Wrapper = styled.div`
       height: 2rem;
     }
     hr {
-      width: 2rem;
-      height: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
   }
 `;
